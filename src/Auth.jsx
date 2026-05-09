@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient.js";
+import "./Auth.css";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const Auth = () => {
   }
 
   return (
-    <div>
+    <div className="auth-container">
       <h1>{isLogin ? "Login" : "Register"}</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -38,8 +39,8 @@ const Auth = () => {
         />
         <button type="submit">{isLogin ? "Login" : "Register"}</button>
       </form>
-      {error && <p>{error}</p>}
-      <button onClick={() => setIsLogin(!isLogin)}>
+      {error && <p className="auth-error">{error}</p>}
+      <button className="auth-toggle" onClick={() => setIsLogin(!isLogin)}>
         {isLogin ? "Need an account? Register" : "Have an account? Login"}
       </button>
     </div>

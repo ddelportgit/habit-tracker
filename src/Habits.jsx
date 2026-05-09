@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient.js";
+import Heatmap from "./Heatmap";
+import "./Habits.css";
 
 const Habits = ({ session }) => {
   const [habits, setHabits] = useState([]);
   const [completions, setCompletions] = useState([]);
   const [newHabit, setNewHabit] = useState("");
+  const [editingId, setEditingId] = useState(null);
+  const [editingName, setEditingName] = useState("");
+  const [openHeatmapId, setOpenHeatmapId] = useState(null);
 
   useEffect(() => {
     fetchHabits();
@@ -29,7 +34,8 @@ const Habits = ({ session }) => {
   }
 
   function isCompletedToday(habitId) {
-    return completions.some((c) => c.habit_id === habitId);
+    const today = new Date().toISOString().split("T")[0];
+    return completions.some((c) => c.habit_id === habitId && c.completed_date === today);
   }
 
   async function toggleCompletion(habitId) {
@@ -77,6 +83,8 @@ const Habits = ({ session }) => {
         break;
       }
     }
+
+    return streak;
   }
 
   async function addHabit(e) {
@@ -101,29 +109,94 @@ const Habits = ({ session }) => {
     else fetchHabits();
   }
 
+  async function updateHabit(id) {
+    if (!editingName.trim()) return;
+
+    const { error } = await supabase.from("habits").update({ name: editingName }).eq("id", id);
+
+    if (error) console.log(error);
+    else {
+      setEditingId(null);
+      setEditingName("");
+      fetchHabits();
+    }
+  }
+
+  function toggleHeatmap(habitId) {
+    setOpenHeatmapId(openHeatmapId === habitId ? null : habitId);
+  }
+
   return (
     <div>
-      <h1>My Habits</h1>
-      <form onSubmit={addHabit}>
+      <div className="habits-header">
+        <h1>My Habits</h1>
+      </div>
+      <form className="add-habit-form" onSubmit={addHabit}>
         <input
           type="text"
           placeholder="Add new habit..."
           value={newHabit}
           onChange={(e) => setNewHabit(e.target.value)}
         />
-        <button type="submit">Add</button>
+        <button type="submit">
+          <i className="fa-solid fa-plus"></i>
+        </button>
       </form>
-      <ul>
+      <ul className="habits-list">
         {habits.map((habit) => (
-          <li key={habit.id}>
-            <span style={{ textDecoration: isCompletedToday(habit.id) ? "line-through" : "none" }}>
-              {habit.name}
-            </span>
-            <span>🔥 {getStreak(habit.id)} day streak</span>
-            <button onClick={() => toggleCompletion(habit.id)}>
-              {isCompletedToday(habit.id) ? "✅ Done" : "⬜ Mark done"}
-            </button>
-            <button onClick={() => deleteHabit(habit.id)}>Delete</button>
+          <li className="habit-card" key={habit.id}>
+            {editingId === habit.id ? (
+              <>
+                <input
+                  className="edit-input"
+                  type="text"
+                  value={editingName}
+                  onChange={(e) => setEditingName(e.target.value)}
+                />
+                <button className="save-btn" onClick={() => updateHabit(habit.id)}>
+                  <i className="fa-solid fa-floppy-disk"></i>
+                </button>
+                <button className="cancel-btn" onClick={() => setEditingId(null)}>
+                  <i className="fa-solid fa-xmark"></i>
+                </button>
+              </>
+            ) : (
+              <>
+                <span className={`habit-name ${isCompletedToday(habit.id) ? "done" : ""}`}>
+                  {habit.name}
+                </span>
+                <span className="streak">
+                  <i className="fa-solid fa-fire"></i> {getStreak(habit.id)} day streak
+                </span>
+                <button className="done-btn" onClick={() => toggleCompletion(habit.id)}>
+                  {isCompletedToday(habit.id) ? (
+                    <i className="fa-solid fa-check"></i>
+                  ) : (
+                    <i className="fa-regular fa-circle"></i>
+                  )}
+                </button>
+                <button
+                  className="edit-btn"
+                  onClick={() => {
+                    setEditingId(habit.id);
+                    setEditingName(habit.name);
+                  }}
+                >
+                  <i className="fa-solid fa-pen"></i>
+                </button>
+                <button className="delete-btn" onClick={() => deleteHabit(habit.id)}>
+                  <i className="fa-solid fa-trash"></i>
+                </button>
+                <button className="history-btn" onClick={() => toggleHeatmap(habit.id)}>
+                  {openHeatmapId === habit.id ? (
+                    <i className="fa-solid fa-calendar-xmark"></i>
+                  ) : (
+                    <i className="fa-solid fa-calendar-days"></i>
+                  )}
+                </button>
+              </>
+            )}
+            {openHeatmapId === habit.id && <Heatmap habitId={habit.id} completions={completions} />}
           </li>
         ))}
       </ul>

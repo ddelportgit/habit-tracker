@@ -1,0 +1,242 @@
+.habits-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.habits-header h1 {
+  font-size: 24px;
+}
+
+.logout-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: var(--bg-hover);
+}
+
+.add-habit-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.add-habit-form input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+}
+
+.add-habit-form input:focus {
+  border-color: var(--accent);
+}
+
+.add-habit-form button {
+  padding: 12px 20px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-habit-form button:hover {
+  background: var(--accent-hover);
+}
+
+.habits-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.habit-card {
+  background: var(--bg-card);
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.habit-name {
+  flex: 1;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.habit-name.done {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.streak {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.done-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.done-btn:hover {
+  background: var(--bg-hover);
+}
+
+.edit-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.edit-btn:hover {
+  background: var(--bg-hover);
+}
+
+.delete-btn {
+  background: none;
+  border: 1px solid var(--danger-border);
+  color: var(--danger);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: var(--danger-hover);
+}
+
+.history-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.history-btn:hover {
+  background: var(--bg-hover);
+}
+
+.edit-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.save-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: var(--accent-hover);
+}
+
+.cancel-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: var(--bg-hover);
+}
+
+.heatmap {
+  width: 100%;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.heatmap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heatmap-day {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.heatmap-day-empty {
+  background: var(--bg-hover);
+}
+
+.heatmap-day-done {
+  background: var(--accent);
+}
+
+.dark-mode-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dark-mode-btn:hover {
+  background: var(--bg-hover);
+}
