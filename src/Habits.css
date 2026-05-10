@@ -78,6 +78,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
+  transition: all 0.25s ease;
 }
 
 .habit-name {
@@ -204,6 +205,21 @@
   margin-top: 4px;
   padding-top: 16px;
   border-top: 1px solid var(--border-color);
+  overflow: hidden;
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+    transform: translateY(0);
+  }
 }
 
 .heatmap-column {
@@ -239,4 +255,91 @@
 
 .dark-mode-btn:hover {
   background: var(--bg-hover);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  gap: 12px;
+  text-align: center;
+}
+
+.empty-state i {
+  font-size: 48px;
+  color: var(--text-muted);
+}
+
+.empty-state h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.done-btn,
+.edit-btn,
+.delete-btn,
+.history-btn,
+.cancel-btn,
+.save-btn,
+.logout-btn,
+.dark-mode-btn {
+  transition:
+    background 0.2s,
+    transform 0.1s,
+    border-color 0.2s;
+}
+
+.done-btn:active,
+.edit-btn:active,
+.delete-btn:active,
+.history-btn:active,
+.cancel-btn:active,
+.save-btn:active,
+.logout-btn:active,
+.dark-mode-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 480px) {
+  .habit-card {
+    gap: 8px;
+  }
+
+  .habit-name {
+    font-size: 14px;
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .streak {
+    font-size: 12px;
+    flex-basis: 100%;
+  }
+
+  .done-btn,
+  .edit-btn,
+  .delete-btn,
+  .history-btn {
+    flex: 1;
+    padding: 8px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .add-habit-form input {
+    font-size: 14px;
+  }
+
+  #root {
+    padding: 20px 12px;
+  }
 }

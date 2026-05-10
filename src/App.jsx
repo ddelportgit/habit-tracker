@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient.js";
 import Auth from "./Auth";
 import Habits from "./Habits";
+import Landing from "./Landing";
 import "./Habits.css";
 
 const App = () => {
   const [session, setSession] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
+  const [showLanding, setShowLanding] = useState(true);
 
   useEffect(() => {
     if (darkMode) {
@@ -26,10 +28,16 @@ const App = () => {
     });
   }, []);
 
-  if (!session) return <Auth />;
+  if (showLanding && !session) return <Landing onGetStarted={() => setShowLanding(false)} />;
+  if (!session)
+    return (
+      <div className="auth-wrapper">
+        <Auth />
+      </div>
+    );
 
   return (
-    <div>
+    <div className="app-container">
       <div className="habits-header">
         <button className="logout-btn" onClick={() => supabase.auth.signOut()}>
           Log out
