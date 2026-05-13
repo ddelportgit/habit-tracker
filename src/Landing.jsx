@@ -1,6 +1,6 @@
 import "./Landing.css";
 
-const Landing = ({ onGetStarted }) => {
+const Landing = ({ onGetStarted, onTryOut }) => {
   return (
     <div className="landing">
       <nav className="landing-nav">
@@ -17,9 +17,14 @@ const Landing = ({ onGetStarted }) => {
         <p className="hero-subtitle">
           Track your daily habits, build streaks, and visualize your progress over time.
         </p>
-        <button className="hero-btn" onClick={onGetStarted}>
-          Get started for free
-        </button>
+        <div className="hero-buttons">
+          <button className="hero-btn" onClick={onGetStarted}>
+            Get started for free
+          </button>
+          <button className="hero-btn-secondary" onClick={onTryOut}>
+            Try it out
+          </button>
+        </div>
       </section>
 
       <section className="features">
@@ -85,9 +90,12 @@ const Landing = ({ onGetStarted }) => {
       <footer className="footer">
         <span className="landing-logo">Habitly</span>
         <p className="footer-text">Built with React and Supabase</p>
-        <button className="hero-btn" onClick={onGetStarted}>
-          Get started for free
-        </button>
+        <div className="hero-buttons">
+          <button className="hero-btn" onClick={onGetStarted}>
+            Get started for free
+          </button>
+          <button className="hero-btn-secondary onClick={onTryOut}">Demo</button>
+        </div>
       </footer>
     </div>
   );

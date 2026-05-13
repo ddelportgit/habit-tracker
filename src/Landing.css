@@ -60,6 +60,13 @@
   line-height: 1.6;
 }
 
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
 .hero-btn {
   background: var(--accent);
   color: white;
@@ -80,6 +87,24 @@
 
 .hero-btn:active {
   transform: scale(0.97);
+}
+
+.hero-btn-secondary {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.hero-btn-secondary:hover {
+  background: var(--bg-hover);
 }
 
 .features {

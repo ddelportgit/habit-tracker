@@ -2,7 +2,7 @@ import { useState } from "react";
 import { supabase } from "./supabaseClient.js";
 import "./Auth.css";
 
-const Auth = () => {
+const Auth = ({ onBack }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
@@ -23,6 +23,9 @@ const Auth = () => {
 
   return (
     <div className="auth-container">
+      <button className="auth-back-btn" onClick={onBack}>
+        <i className="fa-solid fa-arrow-left"></i> Back
+      </button>
       <h1>{isLogin ? "Login" : "Register"}</h1>
       <form onSubmit={handleSubmit}>
         <input

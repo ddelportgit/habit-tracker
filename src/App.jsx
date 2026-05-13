@@ -28,11 +28,17 @@ const App = () => {
     });
   }, []);
 
-  if (showLanding && !session) return <Landing onGetStarted={() => setShowLanding(false)} />;
+  async function handleTryOut() {
+    const { error } = await supabase.auth.signInAnonymously();
+    if (error) console.log(error);
+  }
+
+  if (showLanding && !session)
+    return <Landing onGetStarted={() => setShowLanding(false)} onTryOut={handleTryOut} />;
   if (!session)
     return (
       <div className="auth-wrapper">
-        <Auth />
+        <Auth onBack={() => setShowLanding(true)} />
       </div>
     );
 
