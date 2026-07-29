@@ -31,28 +31,33 @@ const Landing = ({ onGetStarted, onTryOut }) => {
         <h2 className="section-title">Everything you need to build better habits</h2>
         <div className="features-grid">
           <div className="feature-card">
-            <i className="fa-solid fa-fire"></i>
-            <h3>Streak tracking</h3>
+            <h3>
+              Streak tracking <i className="fa-solid fa-fire"></i>
+            </h3>
             <p>Stay motivated by tracking your daily streaks and never break the chain.</p>
           </div>
           <div className="feature-card">
-            <i className="fa-solid fa-calendar-days"></i>
-            <h3>Habit heatmap</h3>
+            <h3>
+              Habit heatmap <i className="fa-solid fa-calendar-days"></i>
+            </h3>
             <p>Visualize your consistency over the past 12 weeks with a beautiful heatmap.</p>
           </div>
           <div className="feature-card">
-            <i className="fa-solid fa-check"></i>
-            <h3>Daily check-ins</h3>
+            <h3>
+              Daily check-ins <i className="fa-solid fa-check"></i>
+            </h3>
             <p>Mark habits as done each day and watch your progress grow over time</p>
           </div>
           <div className="feature-card">
-            <i className="fa-solid fa-lock"></i>
-            <h3>Private and secure</h3>
+            <h3>
+              Private & secure <i className="fa-solid fa-lock"></i>
+            </h3>
             <p>Your habits are private to you. Nobody else can see your data.</p>
           </div>
           <div className="feature-card">
-            <i className="fa-solid fa-pen"></i>
-            <h3>Full control</h3>
+            <h3>
+              Full control <i className="fa-solid fa-pen"></i>
+            </h3>
             <p>Add, edit, and delete habits anytime. You are always in control.</p>
           </div>
         </div>
@@ -89,12 +94,16 @@ const Landing = ({ onGetStarted, onTryOut }) => {
 
       <footer className="footer">
         <span className="landing-logo">Habitly</span>
-        <p className="footer-text">Built with React and Supabase</p>
+        <p className="footer-text">
+          Track your habits effortlessly with Habitly. Get started now or try the demo.
+        </p>
         <div className="hero-buttons">
           <button className="hero-btn" onClick={onGetStarted}>
-            Get started for free
+            Sign Up
           </button>
-          <button className="hero-btn-secondary onClick={onTryOut}">Demo</button>
+          <button className="hero-btn-secondary" onClick={onTryOut}>
+            Demo
+          </button>
         </div>
       </footer>
     </div>

@@ -1,7 +1,7 @@
 .auth-container {
   width: 100%;
   max-width: 400px;
-  background: white;
+  background: var(--bg-primary);
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -52,7 +52,7 @@
 
 .auth-container button[type="submit"] {
   padding: 12px;
-  background: #6c63ff;
+  background: var(--text-primary);
   color: white;
   border: none;
   border-radius: 8px;
@@ -63,7 +63,7 @@
 }
 
 .auth-container button[type="submit"]:hover {
-  background: #5a52d5;
+  background: var(--text-secondary);
 }
 
 .auth-error {
@@ -75,7 +75,7 @@
 .auth-toggle {
   background: none;
   border: none;
-  color: #6c63ff;
+  color: #9f9aff;
   font-size: 14px;
   cursor: pointer;
   padding: 0;

@@ -49,7 +49,7 @@
 .add-habit-form button {
   padding: 12px 20px;
   background: var(--accent);
-  color: white;
+  color: var(--bg-primary);
   border: none;
   border-radius: 8px;
   font-size: 15px;
