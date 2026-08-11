@@ -45,10 +45,12 @@
   font-size: 15px;
   outline: none;
   transition: border-color 0.2s;
+  background: transparent;
+  color: var(--text-primary);
 }
 
 .auth-container input:focus {
-  border-color: #090813;
+  border-color: var(--text-secondary);
 }
 
 .auth-container button[type="submit"] {

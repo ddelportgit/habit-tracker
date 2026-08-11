@@ -179,7 +179,7 @@ const Habits = ({ session }) => {
                     {isCompletedToday(habit.id) ? (
                       <i className="fa-solid fa-check"></i>
                     ) : (
-                      <i className="fa-regular fa-circle"></i>
+                      <i className="fa-regular fa-square"></i>
                     )}
                   </button>
                   <button
