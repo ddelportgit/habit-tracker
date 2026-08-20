@@ -1,16 +1,59 @@
-# React + Vite
+# Habit Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A habit tracking web app for building and maintaining daily habits, with streak calculation and a GitHub-style activity heatmap.
 
-Currently, two official plugins are available:
+**Live demo:** https://habit-tracker-one-sage.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Authentication** — sign up, log in, and manage your account
+- **Habit CRUD** — create, edit, and delete habits
+- **Streak calculation** to track consistency over time
+- **GitHub-style heatmap** visualizing habit activity
+- **Guest mode** to try the app without creating an account
+- **Dark mode**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React (Vite)
+- **Backend / Auth / Database:** Supabase
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Prerequisites
+
+- Node.js (LTS recommended)
+- A Supabase project (URL + anon key)
+
+### Installation
+
+```bash
+git clone https://github.com/ddelportgit/habit-tracker.git
+cd habit-tracker
+npm install
+```
+
+### Environment Variables
+
+Create a `.env` file in the project root with your Supabase credentials:
+
+```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### Run Locally
+
+```bash
+npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+## Deployment
+
+Deployed to Vercel.
